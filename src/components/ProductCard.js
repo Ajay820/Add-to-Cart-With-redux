@@ -1,7 +1,11 @@
 import "./ProductCard.css";
 
+import { add } from "../store/slice";
+import { useDispatch } from "react-redux";
+
 export const ProductCard = ({product}) => {
   const {name, price, image} = product;
+  const dispatch = useDispatch()
 
   return (
     <div className="productCard">
@@ -9,7 +13,7 @@ export const ProductCard = ({product}) => {
       <p className="name">{name}</p>
       <div className="action">
         <p>${price}</p>
-        <button>Add To Cart</button>
+        <button onClick={()=>dispatch(add(product))}>Add To Cart</button>
       </div>
     </div>
   )
